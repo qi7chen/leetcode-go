@@ -2,24 +2,24 @@ package leetcode
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_merge(t *testing.T) {
-	type args struct {
-		x []int
-		m int
-		y []int
-		n int
-	}
 	tests := []struct {
-		name string
-		args args
+		num1 []int
+		m    int
+		num2 []int
+		n    int
+		want []int
 	}{
-		// TODO: Add test cases.
+		{[]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3, []int{1, 2, 2, 3, 5, 6}},
+		{[]int{1}, 1, []int{}, 0, []int{1}},
+		{[]int{0}, 0, []int{1}, 1, []int{1}},
 	}
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			merge(tt.args.x, tt.args.m, tt.args.y, tt.args.n)
-		})
+		merge(tt.num1, tt.m, tt.num2, tt.n)
+		assert.Equal(t, tt.want, tt.num1)
 	}
 }

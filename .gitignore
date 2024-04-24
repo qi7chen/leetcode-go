@@ -17,5 +17,15 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+.DS_Store
+
 # Go workspace file
 go.work
+
+__pycache__
+
+/.idea
+/.vscode
+/.project
+
+.env

@@ -1,23 +1,42 @@
 package leetcode
 
+import (
+	"slices"
+)
+
 // https://leetcode.cn/problems/merge-sorted-array
-func merge(x []int, m int, y []int, n int) {
-	var i, j int
-	for i < m && j < n {
-		if x[i] < y[j] {
-			insertAt(x, i+1, y[j])
-			i++
-		} else if x[i] > y[j] {
-			insertAt(x, i, y[j])
-			j++
-		} else {
-			i++
-			j++
-		}
-	}
+
+func merge(dst []int, m int, arr []int, n int) {
+	mergeV2(dst, m, arr, n)
 }
 
-// insertAt 把`v`插入到第`i`个位置
-func insertAt(s []int, i int, v int) {
+// O((m+n)log(m+n))
+// 将数组arr放入dst的尾部，然后直接对整个数组进行排序
+func mergeV1(dst []int, m int, arr []int, n int) {
+	for i := 0; i < n; i++ {
+		dst[m+i] = arr[i]
+	}
+	slices.Sort(dst)
+}
 
+// O(m+n)
+// 将两个数组看作队列，每次从两个数组尾部取出比较大的数字放到结果中
+func mergeV2(dst []int, m int, arr []int, n int) {
+	i, j, k := m-1, n-1, m+n-1
+	for i >= 0 && j >= 0 {
+		if dst[i] > arr[j] {
+			dst[k] = dst[i]
+			k--
+			i--
+		} else {
+			dst[k] = arr[j]
+			k--
+			j--
+		}
+	}
+	for j >= 0 {
+		dst[k] = arr[j]
+		j--
+		k--
+	}
 }
