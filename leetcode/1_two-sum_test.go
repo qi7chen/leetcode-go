@@ -20,6 +20,7 @@ func Test_twoSum(t *testing.T) {
 		{[]int{2, 7, 1, 8}, 9, []int{0, 1}},
 		{[]int{-2, -7, 11, 15}, 4, []int{1, 2}},
 		{[]int{-2, -7, 11, 15}, 0, []int{-1, -1}},
+		{[]int{3, 2, 4}, 6, []int{1, 2}},
 	}
 	for i, tt := range tests {
 		got := twoSum(tt.nums, tt.target)
