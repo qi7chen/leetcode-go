@@ -21,7 +21,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		if prev != nil {
 			prev.Next = node
 		}
-		prev = node
+		prev = node // 合并节点，不做分配
 		if l1 != nil {
 			l1 = l1.Next
 		}
