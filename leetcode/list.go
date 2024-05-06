@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func sliceToList(s []int) *ListNode {
+func buildList(s []int) *ListNode {
 	if len(s) == 0 {
 		return nil
 	}
@@ -19,7 +19,7 @@ func sliceToList(s []int) *ListNode {
 	return head
 }
 
-func listToSlice(head *ListNode) []int {
+func fmtList(head *ListNode) []int {
 	if head == nil {
 		return nil
 	}

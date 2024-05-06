@@ -18,10 +18,10 @@ func Test_addTwoNumbers(t *testing.T) {
 		{[]int{9, 9, 9, 9, 9, 9, 9}, []int{9, 9, 9, 9}, []int{8, 9, 9, 9, 0, 0, 0, 1}},
 	}
 	for _, tt := range tests {
-		l1 := sliceToList(tt.input1)
-		l2 := sliceToList(tt.input2)
+		l1 := buildList(tt.input1)
+		l2 := buildList(tt.input2)
 		out := addTwoNumbers(l1, l2)
-		l3 := listToSlice(out)
+		l3 := fmtList(out)
 		assert.Equalf(t, tt.want, l3, "addTwoNumbers(%v, %v)", tt.input1, tt.input2)
 	}
 }
