@@ -31,7 +31,7 @@ func fmtList(head *ListNode) []int {
 	return s
 }
 
-func equalList(l1 *ListNode, l2 *ListNode) bool {
+func isEqualList(l1 *ListNode, l2 *ListNode) bool {
 	for l1 != nil && l2 != nil {
 		if l1.Val != l2.Val {
 			return false
@@ -40,4 +40,13 @@ func equalList(l1 *ListNode, l2 *ListNode) bool {
 		l2 = l2.Next
 	}
 	return l1 == nil && l2 == nil
+}
+
+func countList(root *ListNode) int {
+	var count int
+	for root != nil {
+		count++
+		root = root.Next
+	}
+	return count
 }

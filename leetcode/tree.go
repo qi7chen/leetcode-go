@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"strings"
 )
 
 type TreeNode struct {
@@ -10,44 +11,63 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func treeDepth(node *TreeNode) int {
+	if node == nil {
+		return 0
+	}
+	var leftDepth = treeDepth(node.Left)
+	var rightDepth = treeDepth(node.Right)
+	if leftDepth > rightDepth {
+		return leftDepth + 1
+	}
+	return rightDepth + 1
+}
+
+func createTreeNodeBy(v any) *TreeNode {
+	val, err := toInt(v)
+	if err != nil {
+		return nil
+	}
+	return &TreeNode{Val: val}
+}
+
 func buildTree(s ...any) *TreeNode {
 	if len(s) == 0 {
 		return nil
 	}
-	rootVal, err := toInt(s[0])
-	if err != nil {
+	var root = createTreeNodeBy(s[0])
+	if root == nil {
 		return nil
 	}
-	var root = &TreeNode{Val: rootVal}
 	var queue = []*TreeNode{root}
 	for i := 1; i < len(s); {
-		var node = queue[0]
-		queue = queue[1:] // pop left
+		var parent = queue[0]
+		queue = queue[1:] // pop queue
 		if i < len(s) {
-			nodeVal, er := toInt(s[i])
+			var node = createTreeNodeBy(s[i]) // left child
 			i++
-			if er == nil {
-				node.Left = &TreeNode{Val: nodeVal}
-				queue = append(queue, node.Left)
+			if node != nil {
+				parent.Left = node
+				queue = append(queue, node)
 			}
 		}
 		if i < len(s) {
-			nodeVal, er := toInt(s[i])
+			var node = createTreeNodeBy(s[i]) // right child
 			i++
-			if er == nil {
-				node.Right = &TreeNode{Val: nodeVal}
-				queue = append(queue, node.Right)
+			if node != nil {
+				parent.Right = node
+				queue = append(queue, node)
 			}
 		}
 	}
 	return root
 }
 
-func fmtTree(root *TreeNode) []int {
+func fmtTree(root *TreeNode) []any {
 	if root == nil {
 		return nil
 	}
-	var result []int
+	var result []any
 	var queue = []*TreeNode{root}
 	for len(queue) > 0 {
 		var node = queue[0]
@@ -65,9 +85,34 @@ func printTree(root *TreeNode) {
 	if root == nil {
 		return
 	}
-	printTree(root.Left)
-	fmt.Printf("%v ", root.Val)
-	printTree(root.Right)
+	var maxDepth = treeDepth(root)
+	var queue = []*TreeNode{root}
+	var depth = 1
+	for len(queue) > 0 {
+		var size = len(queue)
+		for i := 0; i < size; i++ {
+			var node = queue[i]
+			if node.Left != nil {
+				queue = append(queue, node.Left)
+			}
+			if node.Right != nil {
+				queue = append(queue, node.Right)
+			}
+			printNode(node, maxDepth, depth)
+		}
+		depth++
+		queue = queue[size:] // pop queue
+		fmt.Println()
+	}
+}
+
+func printNode(node *TreeNode, maxDepth, depth int) {
+	var padding = strings.Repeat(" ", maxDepth-depth+1)
+	if node == nil {
+		fmt.Printf("%snull", padding)
+	} else {
+		fmt.Printf("%s%d", padding, node.Val)
+	}
 }
 
 func toInt(v any) (int, error) {
