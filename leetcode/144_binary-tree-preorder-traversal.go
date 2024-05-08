@@ -5,7 +5,7 @@ package leetcode
 // 二叉树的前序遍历
 func preorderTraversal(root *TreeNode) []int {
 	if true {
-		return preorderImperative(root)
+		return preorderIterative(root)
 	}
 	var res []int
 	preorderRecursive(root, &res)
@@ -23,7 +23,7 @@ func preorderRecursive(node *TreeNode, res *[]int) {
 }
 
 // 迭代方式
-func preorderImperative(root *TreeNode) []int {
+func preorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return nil
 	}
@@ -33,7 +33,9 @@ func preorderImperative(root *TreeNode) []int {
 	for len(stack) > 0 {
 		var node = stack[len(stack)-1] // stack top
 		stack = stack[:len(stack)-1]   // pop stack
+
 		result = append(result, node.Val)
+
 		if node.Right != nil {
 			stack = append(stack, node.Right)
 		}

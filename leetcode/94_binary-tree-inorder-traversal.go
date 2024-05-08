@@ -4,8 +4,8 @@ package leetcode
 
 // 二叉树的中序遍历
 func inorderTraversal(root *TreeNode) []int {
-	if false {
-		return inorderImperative(root)
+	if true {
+		return inorderIterative(root)
 	}
 	var res []int
 	inorderRecursive(root, &res)
@@ -23,7 +23,7 @@ func inorderRecursive(node *TreeNode, res *[]int) {
 }
 
 // 迭代方式
-func inorderImperative(root *TreeNode) []int {
+func inorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return nil
 	}
@@ -31,15 +31,16 @@ func inorderImperative(root *TreeNode) []int {
 	var stack = make([]*TreeNode, 0, 8)
 	var node = root
 	for node != nil || len(stack) > 0 {
-		if node != nil {
+		for node != nil {
 			stack = append(stack, node)
 			node = node.Left
-		} else {
-			node = stack[len(stack)-1]   // stack top
-			stack = stack[:len(stack)-1] // pop stack
-			result = append(result, node.Val)
-			node = node.Right
 		}
+
+		node = stack[len(stack)-1]   // stack top
+		stack = stack[:len(stack)-1] // pop stack
+
+		result = append(result, node.Val)
+		node = node.Right
 	}
 	return result
 }
