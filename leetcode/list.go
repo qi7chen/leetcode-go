@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"fmt"
+)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -49,4 +53,41 @@ func countList(root *ListNode) int {
 		root = root.Next
 	}
 	return count
+}
+
+func toInt(v any) (int, error) {
+	switch val := v.(type) {
+	case int:
+		return val, nil
+	case int8:
+		return int(val), nil
+	case int16:
+		return int(val), nil
+	case int32:
+		return int(val), nil
+	case int64:
+		return int(val), nil
+	case uint:
+		return int(val), nil
+	case uint8:
+		return int(val), nil
+	case uint16:
+		return int(val), nil
+	case uint32:
+		return int(val), nil
+	case uint64:
+		return int(val), nil
+	}
+	return 0, fmt.Errorf("invalid type %T", v)
+}
+
+func toIntList(s []any) []int {
+	var a []int
+	for _, v := range s {
+		val, err := toInt(v)
+		if err == nil {
+			a = append(a, val)
+		}
+	}
+	return a
 }

@@ -114,29 +114,3 @@ func printNode(node *TreeNode, maxDepth, depth int) {
 		fmt.Printf("%s%d", padding, node.Val)
 	}
 }
-
-func toInt(v any) (int, error) {
-	switch val := v.(type) {
-	case int:
-		return val, nil
-	case int8:
-		return int(val), nil
-	case int16:
-		return int(val), nil
-	case int32:
-		return int(val), nil
-	case int64:
-		return int(val), nil
-	case uint:
-		return int(val), nil
-	case uint8:
-		return int(val), nil
-	case uint16:
-		return int(val), nil
-	case uint32:
-		return int(val), nil
-	case uint64:
-		return int(val), nil
-	}
-	return 0, fmt.Errorf("invalid type %T", v)
-}
