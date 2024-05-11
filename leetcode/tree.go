@@ -11,12 +11,12 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func treeDepth(node *TreeNode) int {
+func maxTreeDepth(node *TreeNode) int {
 	if node == nil {
 		return 0
 	}
-	var leftDepth = treeDepth(node.Left)
-	var rightDepth = treeDepth(node.Right)
+	var leftDepth = maxTreeDepth(node.Left)
+	var rightDepth = maxTreeDepth(node.Right)
 	if leftDepth > rightDepth {
 		return leftDepth + 1
 	}
@@ -85,7 +85,7 @@ func printTree(root *TreeNode) {
 	if root == nil {
 		return
 	}
-	var maxDepth = treeDepth(root)
+	var maxDepth = maxTreeDepth(root)
 	var queue = []*TreeNode{root}
 	var depth = 1
 	for len(queue) > 0 {
