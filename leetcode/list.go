@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"strconv"
 )
 
 type ListNode struct {
@@ -78,7 +79,7 @@ func toInt(v any) (int, error) {
 	case uint64:
 		return int(val), nil
 	}
-	return 0, fmt.Errorf("invalid type %T", v)
+	return strconv.Atoi(fmt.Sprintf("%v", v))
 }
 
 func toIntList(s []any) []int {

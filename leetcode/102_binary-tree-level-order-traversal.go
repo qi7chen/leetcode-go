@@ -1,5 +1,8 @@
 package leetcode
 
+// https://leetcode.cn/problems/binary-tree-level-order-traversal
+// 二叉树层序遍历
+
 func levelOrder(root *TreeNode) [][]int {
 	if root == nil {
 		return nil
@@ -19,6 +22,7 @@ func levelOrder(root *TreeNode) [][]int {
 			}
 			level = append(level, node.Val)
 		}
+		queue = queue[size:]
 		result = append(result, level)
 	}
 	return result
