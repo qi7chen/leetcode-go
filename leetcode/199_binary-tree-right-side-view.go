@@ -1,17 +1,18 @@
 package leetcode
 
-// https://leetcode.cn/problems/binary-tree-level-order-traversal
-// 二叉树层序遍历
+// https://leetcode.cn/problems/binary-tree-right-side-view
+// 二叉树的右视图
 
-func levelOrder(root *TreeNode) [][]int {
+func rightSideView(root *TreeNode) []int {
 	if root == nil {
 		return nil
 	}
-	var result [][]int
+	var result []int
 	var queue = []*TreeNode{root}
 	for len(queue) > 0 {
 		var size = len(queue)
-		var level = make([]int, 0, size)
+		var right = queue[size-1] // right most node
+		result = append(result, right.Val)
 		for i := 0; i < size; i++ {
 			var node = queue[i]
 			if node.Left != nil {
@@ -20,10 +21,8 @@ func levelOrder(root *TreeNode) [][]int {
 			if node.Right != nil {
 				queue = append(queue, node.Right)
 			}
-			level = append(level, node.Val)
 		}
 		queue = queue[size:]
-		result = append(result, level) // push back
 	}
 	return result
 }

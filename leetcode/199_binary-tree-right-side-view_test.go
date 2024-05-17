@@ -6,17 +6,17 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_levelOrder(t *testing.T) {
+func Test_rightSideView(t *testing.T) {
 	tests := []struct {
 		nodes  []any
-		expect [][]int
+		expect []int
 	}{
-		{[]any{1}, [][]int{{1}}},
-		{[]any{3, 9, 20, nil, nil, 15, 7}, [][]int{{3}, {9, 20}, {15, 7}}},
+		{[]any{1, nil, 3}, []int{1, 3}},
+		{[]any{1, 2, 3, nil, 5, nil, 4}, []int{1, 3, 4}},
 	}
 	for i, tt := range tests {
 		var tree = buildTree(tt.nodes...)
-		var result = levelOrder(tree)
+		var result = rightSideView(tree)
 		assert.Equalf(t, tt.expect, result, "case-%d", i+1)
 	}
 }
