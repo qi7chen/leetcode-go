@@ -5,6 +5,13 @@ import (
 	"strings"
 )
 
+// Node N叉树
+type Node struct {
+	Val      int
+	Children []*Node
+}
+
+// TreeNode 二叉树
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
