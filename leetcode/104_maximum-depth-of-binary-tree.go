@@ -3,13 +3,45 @@ package leetcode
 // https://leetcode.cn/problems/maximum-depth-of-binary-tree/
 // 二叉树的最大深度
 func maxDepth(root *TreeNode) int {
+	if true {
+		return maxDepthDfs(root)
+	}
+	return maxDepthBfs(root)
+}
+
+// 深度优先算法（递归）
+func maxDepthDfs(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	var leftDepth = maxDepth(root.Left)
-	var rightDepth = maxDepth(root.Right)
+	var leftDepth = maxDepthDfs(root.Left)
+	var rightDepth = maxDepthDfs(root.Right)
 	if leftDepth > rightDepth {
 		return leftDepth + 1
 	}
 	return rightDepth + 1
+}
+
+// 广度优先算法
+func maxDepthBfs(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	var depth int
+	var queue = []*TreeNode{root}
+	for len(queue) > 0 {
+		var size = len(queue)
+		for i := 0; i < size; i++ {
+			var node = queue[i]
+			if node.Left != nil {
+				queue = append(queue, node.Left)
+			}
+			if node.Right != nil {
+				queue = append(queue, node.Right)
+			}
+		}
+		queue = queue[size:]
+		depth++
+	}
+	return depth
 }
