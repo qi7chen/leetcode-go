@@ -1,9 +1,18 @@
 package leetcode
 
+import "slices"
+
 // https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
 // 二叉树的层序遍历 II
 
 func levelOrderBottom(root *TreeNode) [][]int {
+	if false {
+		return levelOrderBottom_BFS(root)
+	}
+	return levelOrderBottom_DFS(root)
+}
+
+func levelOrderBottom_BFS(root *TreeNode) [][]int {
 	if root == nil {
 		return nil
 	}
@@ -23,7 +32,29 @@ func levelOrderBottom(root *TreeNode) [][]int {
 			level = append(level, node.Val)
 		}
 		queue = queue[size:]
-		result = append([][]int{level}, result...) // push front
+		// result = append([][]int{level}, result) // push front
+		result = append(result, level) // push back
 	}
+	slices.Reverse(result)
+	return result
+}
+
+// 深度优先实现（递归）
+func _levelOrderBottom_DFS(root *TreeNode, depth int, out *[][]int) {
+	if root == nil {
+		return
+	}
+	if len(*out) == depth {
+		*out = append(*out, []int{})
+	}
+	(*out)[depth] = append((*out)[depth], root.Val)
+	_levelOrderBottom_DFS(root.Left, depth+1, out)
+	_levelOrderBottom_DFS(root.Right, depth+1, out)
+}
+
+func levelOrderBottom_DFS(root *TreeNode) [][]int {
+	var result = make([][]int, 0, 8)
+	_levelOrderBottom_DFS(root, 0, &result)
+	slices.Reverse(result)
 	return result
 }
