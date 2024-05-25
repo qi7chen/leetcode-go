@@ -5,6 +5,11 @@ import (
 	"strings"
 )
 
+const (
+	UseIterativeTraversal = false // 使用迭代遍历，而不是递归
+	UseBFS                = false // 使用广度优先搜索（BFS），不是深度优先搜索（DFS）
+)
+
 // Node N叉树
 type Node struct {
 	Val      int

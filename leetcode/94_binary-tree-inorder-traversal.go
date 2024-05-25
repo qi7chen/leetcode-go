@@ -4,15 +4,15 @@ package leetcode
 
 // 二叉树的中序遍历
 func inorderTraversal(root *TreeNode) []int {
-	if true {
+	if UseIterativeTraversal {
 		return inorderIterative(root)
 	}
-	var res []int
+	var res = make([]int, 0, 8)
 	inorderRecursive(root, &res)
 	return res
 }
 
-// 递归方式
+// 递归方式的中序遍历
 func inorderRecursive(node *TreeNode, res *[]int) {
 	if node == nil {
 		return
@@ -22,7 +22,7 @@ func inorderRecursive(node *TreeNode, res *[]int) {
 	inorderRecursive(node.Right, res)
 }
 
-// 迭代方式
+// 迭代方式的中序遍历
 func inorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return nil
@@ -44,32 +44,5 @@ func inorderIterative(root *TreeNode) []int {
 	return result
 }
 
+// 还有一个Morris Traversal的方法，可以实现O(1)空间复杂度的中序遍历，但是不太好理解，这里不写了
 // https://en.wikipedia.org/wiki/Tree_traversal#Morris_in-order_traversal_using_threading
-func morrisInorderTraversal(root *TreeNode) []int {
-	if root == nil {
-		return nil
-	}
-	var result = make([]int, 0, 8)
-	for root != nil {
-		// 左子树为空，则打印这个节点，并向右边遍历
-		if root.Left == nil {
-			result = append(result, root.Val)
-			root = root.Right
-		} else {
-			// 如果左节点不为空，就将当前节点连带右子树全部挂到左节点的最右子树下面
-			var parent = root.Left
-			for parent.Right != nil && parent.Right != root {
-				parent = parent.Right
-			}
-			if parent.Right == nil {
-				parent.Right = root
-				root = root.Left
-			} else {
-				parent.Right = nil
-				result = append(result, root.Val)
-				root = root.Right
-			}
-		}
-	}
-	return result
-}

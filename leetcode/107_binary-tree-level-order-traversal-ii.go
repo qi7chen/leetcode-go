@@ -6,12 +6,13 @@ import "slices"
 // 二叉树的层序遍历 II
 
 func levelOrderBottom(root *TreeNode) [][]int {
-	if false {
+	if UseBFS {
 		return levelOrderBottom_BFS(root)
 	}
 	return levelOrderBottom_DFS(root)
 }
 
+// 广度优先实现
 func levelOrderBottom_BFS(root *TreeNode) [][]int {
 	if root == nil {
 		return nil

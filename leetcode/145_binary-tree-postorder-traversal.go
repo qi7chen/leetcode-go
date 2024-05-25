@@ -4,7 +4,7 @@ package leetcode
 
 // 二叉树的后序遍历
 func postorderTraversal(root *TreeNode) []int {
-	if true {
+	if UseIterativeTraversal {
 		return postorderIterative(root)
 	}
 	var res []int

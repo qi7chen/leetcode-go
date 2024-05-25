@@ -4,7 +4,7 @@ package leetcode
 // 二叉树层序遍历
 
 func levelOrder(root *TreeNode) [][]int {
-	if false {
+	if UseBFS {
 		return levelOrder_BFS(root)
 	}
 	return levelOrder_DFS(root)

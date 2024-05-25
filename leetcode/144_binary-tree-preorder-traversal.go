@@ -4,15 +4,15 @@ package leetcode
 
 // 二叉树的前序遍历
 func preorderTraversal(root *TreeNode) []int {
-	if true {
+	if UseIterativeTraversal {
 		return preorderIterative(root)
 	}
-	var res []int
+	var res = make([]int, 0, 8)
 	preorderRecursive(root, &res)
 	return res
 }
 
-// 递归方式
+// 递归方式的前序遍历
 func preorderRecursive(node *TreeNode, res *[]int) {
 	if node == nil {
 		return
@@ -22,7 +22,7 @@ func preorderRecursive(node *TreeNode, res *[]int) {
 	preorderRecursive(node.Right, res)
 }
 
-// 迭代方式
+// 迭代方式的前序遍历
 func preorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return nil
