@@ -2,9 +2,9 @@ package leetcode
 
 // https://leetcode.cn/problems/binary-tree-postorder-traversal/description/
 
-// 二叉树的后序遍历
+// 二叉树的后序遍历，左子树 -> 右子树 -> 根节点
 func postorderTraversal(root *TreeNode) []int {
-	if UseIterativeTraversal {
+	if false {
 		return postorderIterative(root)
 	}
 	var res []int
@@ -50,6 +50,33 @@ func postorderIterative(root *TreeNode) []int {
 		} else {
 			result = append(result, root.Val)
 			root = nil
+		}
+	}
+	return result
+}
+
+// 颜色标记法，对前序、中序、后序遍历，能够写出完全一致的代码
+func postorderColorMark(root *TreeNode) []int {
+	var result = make([]int, 0, 8)
+	var visited = make(map[*TreeNode]struct{})
+	var stack = []*TreeNode{root}
+	for len(stack) > 0 {
+		var node = stack[len(stack)-1] // peek stack
+		stack = stack[:len(stack)-1]   // pop stack
+		if node == nil {
+			continue
+		}
+		if _, ok := visited[node]; !ok {
+			visited[node] = struct{}{}
+			stack = append(stack, node)
+			if node.Right != nil {
+				stack = append(stack, node.Right)
+			}
+			if node.Left != nil {
+				stack = append(stack, node.Left)
+			}
+		} else {
+			result = append(result, node.Val)
 		}
 	}
 	return result

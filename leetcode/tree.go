@@ -2,11 +2,17 @@ package leetcode
 
 import (
 	"fmt"
+	"math"
 	"strings"
 )
 
 const (
-	UseIterativeTraversal = false // 使用迭代遍历，而不是递归
+	ColorWhite = 0 // 未访问过的节点
+	ColorGray  = 1 // 访问过的节点
+)
+
+const (
+	UseIterativeTraversal = true  // 使用迭代遍历，而不是递归
 	UseBFS                = false // 使用广度优先搜索（BFS），不是深度优先搜索（DFS）
 )
 
@@ -21,6 +27,30 @@ type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
+}
+
+// 用node.Val的高位标记颜色
+func markColor(node *TreeNode) {
+	if node.Val >= 0 {
+		node.Val += math.MaxUint32
+	} else {
+		node.Val -= math.MaxUint32
+	}
+}
+
+func unmarkColor(node *TreeNode) {
+	if node.Val >= math.MaxUint32 {
+		node.Val -= math.MaxUint32
+	} else {
+		node.Val += math.MaxUint32
+	}
+}
+
+func getColor(node *TreeNode) int8 {
+	if node.Val >= math.MaxUint32 || node.Val <= math.MinInt32 {
+		return ColorGray
+	}
+	return ColorWhite
 }
 
 func maxTreeDepth(node *TreeNode) int {

@@ -2,7 +2,7 @@ package leetcode
 
 // https://leetcode.cn/problems/binary-tree-inorder-traversal/
 
-// 二叉树的中序遍历
+// 二叉树的中序遍历，左子树 -> 根节点 -> 右子树
 func inorderTraversal(root *TreeNode) []int {
 	if UseIterativeTraversal {
 		return inorderIterative(root)
@@ -12,7 +12,7 @@ func inorderTraversal(root *TreeNode) []int {
 	return res
 }
 
-// 递归方式的中序遍历
+// 递归方式
 func inorderRecursive(node *TreeNode, res *[]int) {
 	if node == nil {
 		return
@@ -22,7 +22,7 @@ func inorderRecursive(node *TreeNode, res *[]int) {
 	inorderRecursive(node.Right, res)
 }
 
-// 迭代方式的中序遍历
+// 迭代方式
 func inorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return nil
@@ -32,14 +32,41 @@ func inorderIterative(root *TreeNode) []int {
 	for root != nil || len(stack) > 0 {
 		for root != nil {
 			stack = append(stack, root)
-			root = root.Left
+			root = root.Left // 最左侧节点
 		}
 
 		root = stack[len(stack)-1]
 		stack = stack[:len(stack)-1] // pop stack
 
 		result = append(result, root.Val)
-		root = root.Right
+		root = root.Right // 处理右子树
+	}
+	return result
+}
+
+// 颜色标记法，对前序、中序、后序遍历，能够写出完全一致的代码
+func inorderColorMark(root *TreeNode) []int {
+	var result = make([]int, 0, 8)
+	var visited = make(map[*TreeNode]struct{})
+	var stack = []*TreeNode{root}
+	for len(stack) > 0 {
+		var node = stack[len(stack)-1] // peek stack
+		stack = stack[:len(stack)-1]   // pop stack
+		if node == nil {
+			continue
+		}
+		if _, ok := visited[node]; !ok {
+			if node.Right != nil {
+				stack = append(stack, node.Right)
+			}
+			visited[node] = struct{}{}
+			stack = append(stack, node)
+			if node.Left != nil {
+				stack = append(stack, node.Left)
+			}
+		} else {
+			result = append(result, node.Val)
+		}
 	}
 	return result
 }
