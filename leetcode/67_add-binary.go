@@ -1,9 +1,5 @@
 package leetcode
 
-import (
-	"unsafe"
-)
-
 // https://leetcode.cn/problems/add-binary
 func addBinary(a string, b string) string {
 	var n = max(len(a), len(b)) + 1
@@ -37,8 +33,4 @@ func addBinary(a string, b string) string {
 		k++
 	}
 	return btos(sum[k:])
-}
-
-func btos(b []byte) string {
-	return *(*string)(unsafe.Pointer(&b))
 }
