@@ -15,7 +15,7 @@ func Test_rightSideView(t *testing.T) {
 		{[]any{1, 2, 3, nil, 5, nil, 4}, []int{1, 3, 4}},
 	}
 	for i, tt := range tests {
-		var tree = buildTree(tt.nodes...)
+		var tree = buildTree(tt.nodes)
 		var result = rightSideView(tree)
 		assert.Equalf(t, tt.expect, result, "case-%d", i+1)
 	}

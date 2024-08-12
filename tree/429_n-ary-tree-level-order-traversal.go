@@ -1,8 +1,7 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/n-ary-tree-level-order-traversal/
 // N 叉树的层序遍历
-
+// https://leetcode.cn/problems/n-ary-tree-level-order-traversal/
 func nAryLevelOrder(root *Node) [][]int {
 	if root == nil {
 		return nil

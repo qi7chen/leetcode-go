@@ -1,8 +1,7 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/binary-tree-postorder-traversal/description/
-
 // 二叉树的后序遍历，左子树 -> 右子树 -> 根节点
+// https://leetcode.cn/problems/binary-tree-postorder-traversal
 func postorderTraversal(root *TreeNode) []int {
 	if false {
 		return postorderIterative(root)

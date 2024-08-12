@@ -1,8 +1,7 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/find-largest-value-in-each-tree-row/
 // 在每个树行中找最大值
-
+// https://leetcode.cn/problems/find-largest-value-in-each-tree-row/
 func largestValues(root *TreeNode) []int {
 	if root == nil {
 		return nil
@@ -11,7 +10,7 @@ func largestValues(root *TreeNode) []int {
 	var queue = []*TreeNode{root}
 	for len(queue) > 0 {
 		var size = len(queue)
-		var max = queue[0].Val
+		var maxVal = queue[0].Val
 		for i := 0; i < size; i++ {
 			var node = queue[i]
 			if node.Left != nil {
@@ -20,12 +19,12 @@ func largestValues(root *TreeNode) []int {
 			if node.Right != nil {
 				queue = append(queue, node.Right)
 			}
-			if node.Val > max {
-				max = node.Val
+			if node.Val > maxVal {
+				maxVal = node.Val
 			}
 		}
 		queue = queue[size:]
-		result = append(result, max)
+		result = append(result, maxVal)
 	}
 	return result
 }

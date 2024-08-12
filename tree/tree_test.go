@@ -10,12 +10,12 @@ func Test_buildTree(t *testing.T) {
 		for i := 1; i < 15; i++ {
 			s = append(s, i)
 		}
-		var tree = buildTree(s...)
+		var tree = buildTree(s)
 		printTree(tree)
 	}
 	{
 		var s = []any{1, 2, 3, nil, 5, 6, nil}
-		var tree = buildTree(s...)
+		var tree = buildTree(s)
 		printTree(tree)
 	}
 }

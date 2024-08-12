@@ -1,8 +1,7 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/binary-tree-right-side-view
 // 二叉树的右视图
-
+// https://leetcode.cn/problems/binary-tree-right-side-view
 func rightSideView(root *TreeNode) []int {
 	if false {
 		rightSideView_BFS(root)

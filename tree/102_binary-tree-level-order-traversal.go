@@ -1,10 +1,9 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/binary-tree-level-order-traversal
 // 二叉树层序遍历
-
+// https://leetcode.cn/problems/binary-tree-level-order-traversal
 func levelOrder(root *TreeNode) [][]int {
-	if UseBFS {
+	if UseBFSOverDFS {
 		return levelOrder_BFS(root)
 	}
 	return levelOrder_DFS(root)

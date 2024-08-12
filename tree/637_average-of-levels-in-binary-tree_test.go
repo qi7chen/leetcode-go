@@ -15,7 +15,7 @@ func Test_averageOfLevels(t *testing.T) {
 		{[]any{3, 9, 20, 15, 7}, []float64{3, 14.5, 11}},
 	}
 	for i, tt := range tests {
-		var tree = buildTree(tt.nodes...)
+		var tree = buildTree(tt.nodes)
 		var result = averageOfLevels(tree)
 		assert.Equalf(t, tt.expect, result, "case-%d", i+1)
 	}

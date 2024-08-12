@@ -19,7 +19,7 @@ func Test_inorderTraversal(t *testing.T) {
 		{[]any{37, -34, -48, nil, -100, -100, 48, nil, nil, nil, nil, -54, nil, -71, -22, nil, nil, nil, 8}, []int{-34, -100, 37, -100, -48, -71, -54, -22, 8, 48}},
 	}
 	for i, tt := range tests {
-		var tree = buildTree(tt.input...)
+		var tree = buildTree(tt.input)
 		var res = inorderTraversal(tree)
 		assert.Equalf(t, tt.want, res, "case-%d", i+1)
 	}

@@ -19,7 +19,7 @@ func Test_postorderTraversal(t *testing.T) {
 		{[]any{37, -34, -48, nil, -100, -100, 48, nil, nil, nil, nil, -54, nil, -71, -22, nil, nil, nil, 8}, []int{-100, -34, -100, -71, 8, -22, -54, 48, -48, 37}},
 	}
 	for i, tt := range tests {
-		var tree = buildTree(tt.input...)
+		var tree = buildTree(tt.input)
 		var res = postorderTraversal(tree)
 		assert.Equalf(t, tt.want, res, "case-%d", i+1)
 	}

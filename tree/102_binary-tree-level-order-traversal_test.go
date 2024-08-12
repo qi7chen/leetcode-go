@@ -15,7 +15,7 @@ func Test_levelOrder(t *testing.T) {
 		{[]any{3, 9, 20, nil, nil, 15, 7}, [][]int{{3}, {9, 20}, {15, 7}}},
 	}
 	for i, tt := range tests {
-		var tree = buildTree(tt.nodes...)
+		var tree = buildTree(tt.nodes)
 		var result = levelOrder(tree)
 		assert.Equalf(t, tt.expect, result, "case-%d", i+1)
 	}

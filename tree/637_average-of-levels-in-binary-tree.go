@@ -4,7 +4,7 @@ package leetcode_tree
 // 二叉树的层平均值
 
 func averageOfLevels(root *TreeNode) []float64 {
-	if UseBFS {
+	if UseBFSOverDFS {
 		return averageOfLevels_BFS(root)
 	}
 	return averageOfLevels_DFS(root)

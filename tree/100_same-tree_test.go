@@ -1,8 +1,9 @@
 package leetcode_tree
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_isSameTree(t *testing.T) {
@@ -16,8 +17,8 @@ func Test_isSameTree(t *testing.T) {
 		{[]any{1, 2, 1}, []any{1, 1, 2}, false},
 	}
 	for _, tt := range tests {
-		var tree1 = buildTree(tt.input1...)
-		var tree2 = buildTree(tt.input2...)
+		var tree1 = buildTree(tt.input1)
+		var tree2 = buildTree(tt.input2)
 		assert.Equal(t, tt.want, isSameTree(tree1, tree2))
 	}
 }

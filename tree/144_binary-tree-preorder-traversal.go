@@ -1,10 +1,9 @@
 package leetcode_tree
 
-// https://leetcode.cn/problems/binary-tree-preorder-traversal/
-
 // 二叉树的前序遍历：根节点 -> 左子树 -> 右子树
+// https://leetcode.cn/problems/binary-tree-preorder-traversal/
 func preorderTraversal(root *TreeNode) []int {
-	if UseIterativeTraversal {
+	if TraversalIterative {
 		return preorderIterative(root)
 	}
 	return preorderColorMark(root)

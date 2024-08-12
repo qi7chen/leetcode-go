@@ -3,7 +3,7 @@ package leetcode_tree
 // 二叉树的中序遍历，左子树 -> 根节点 -> 右子树
 // https://leetcode.cn/problems/binary-tree-inorder-traversal/
 func inorderTraversal(root *TreeNode) []int {
-	if UseIterativeTraversal {
+	if TraversalIterative {
 		return inorderIterative(root)
 	}
 	var res = make([]int, 0, 8)

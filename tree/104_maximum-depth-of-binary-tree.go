@@ -3,7 +3,7 @@ package leetcode_tree
 // https://leetcode.cn/problems/maximum-depth-of-binary-tree/
 // 二叉树的最大深度
 func maxDepth(root *TreeNode) int {
-	if UseBFS {
+	if UseBFSOverDFS {
 		return maxDepth_BFS(root)
 	}
 	return maxDepth_DFS(root)

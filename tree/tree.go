@@ -13,8 +13,8 @@ const (
 )
 
 const (
-	UseIterativeTraversal = true  // 使用迭代遍历，而不是递归
-	UseBFS                = false // 使用广度优先搜索（BFS），不是深度优先搜索（DFS）
+	TraversalIterative = true  // 使用迭代遍历，而不是递归
+	UseBFSOverDFS      = false // 使用广度优先搜索（BFS），不是深度优先搜索（DFS）
 )
 
 // Node N叉树
@@ -100,7 +100,7 @@ func createTreeNodeBy(v any) *TreeNode {
 	return &TreeNode{Val: val}
 }
 
-func buildTree(s ...any) *TreeNode {
+func buildTree(s []any) *TreeNode {
 	if len(s) == 0 {
 		return nil
 	}
