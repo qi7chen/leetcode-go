@@ -2,14 +2,8 @@ package leetcode_tree
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 	"strings"
-)
-
-const (
-	ColorWhite = 0 // 未访问过的节点
-	ColorGray  = 1 // 访问过的节点
 )
 
 const (
@@ -30,30 +24,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// 用node.Val的高位标记颜色
-func markColor(node *TreeNode) {
-	if node.Val >= 0 {
-		node.Val += math.MaxUint32
-	} else {
-		node.Val -= math.MaxUint32
-	}
-}
-
-func unmarkColor(node *TreeNode) {
-	if node.Val >= math.MaxUint32 {
-		node.Val -= math.MaxUint32
-	} else {
-		node.Val += math.MaxUint32
-	}
-}
-
-func getColor(node *TreeNode) int8 {
-	if node.Val >= math.MaxUint32 || node.Val <= math.MinInt32 {
-		return ColorGray
-	}
-	return ColorWhite
-}
-
 func maxTreeDepth(node *TreeNode) int {
 	if node == nil {
 		return 0
@@ -66,38 +36,38 @@ func maxTreeDepth(node *TreeNode) int {
 	return rightDepth + 1
 }
 
-func toInt(v any) (int, error) {
+func toInt(v any) int {
 	switch val := v.(type) {
 	case int:
-		return val, nil
+		return val
 	case int8:
-		return int(val), nil
+		return int(val)
 	case int16:
-		return int(val), nil
+		return int(val)
 	case int32:
-		return int(val), nil
+		return int(val)
 	case int64:
-		return int(val), nil
+		return int(val)
 	case uint:
-		return int(val), nil
+		return int(val)
 	case uint8:
-		return int(val), nil
+		return int(val)
 	case uint16:
-		return int(val), nil
+		return int(val)
 	case uint32:
-		return int(val), nil
+		return int(val)
 	case uint64:
-		return int(val), nil
+		return int(val)
+	case string:
+		n, _ := strconv.Atoi(val)
+		return n
 	}
-	return strconv.Atoi(fmt.Sprintf("%v", v))
+	panic(fmt.Sprintf("toInt: invalid type %T: %v", v, v))
+	return 0
 }
 
 func createTreeNodeBy(v any) *TreeNode {
-	val, err := toInt(v)
-	if err != nil {
-		return nil
-	}
-	return &TreeNode{Val: val}
+	return &TreeNode{Val: toInt(v)}
 }
 
 func buildTree(s []any) *TreeNode {
