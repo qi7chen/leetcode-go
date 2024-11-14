@@ -67,6 +67,9 @@ func toInt(v any) int {
 }
 
 func createTreeNodeBy(v any) *TreeNode {
+	if v == nil {
+		return nil
+	}
 	return &TreeNode{Val: toInt(v)}
 }
 
