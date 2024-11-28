@@ -15,8 +15,15 @@ func reverse(x int) int {
 		val = val*10 + r
 		x = q
 	}
-	if abs(val) > math.MaxInt32 {
+	if absInt(val) > math.MaxInt32 {
 		return 0
 	}
 	return val
+}
+
+func absInt(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }

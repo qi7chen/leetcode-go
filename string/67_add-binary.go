@@ -33,5 +33,5 @@ func addBinary(a string, b string) string {
 	for k+1 < n && sum[k] == '0' {
 		k++
 	}
-	return btos(sum[k:])
+	return string(sum[k:])
 }
