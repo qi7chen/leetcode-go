@@ -36,6 +36,17 @@ func fmtList(head *ListNode) []int {
 	return s
 }
 
+func getListTail(head *ListNode) *ListNode {
+	if head == nil {
+		return nil
+	}
+	var tail = head
+	for tail.Next != nil {
+		tail = tail.Next
+	}
+	return tail
+}
+
 func isEqualList(l1 *ListNode, l2 *ListNode) bool {
 	for l1 != nil && l2 != nil {
 		if l1.Val != l2.Val {
