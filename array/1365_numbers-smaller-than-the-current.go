@@ -21,9 +21,13 @@ func smallerNumbersThanCurrent(nums []int) []int {
 		return sorted[i].val < sorted[j].val
 	})
 
+	var prev = -1
 	var ans = make([]int, len(nums))
 	for i := 0; i < len(sorted); i++ {
-		ans[i] = sorted[i].idx
+		if prev == -1 || sorted[i].val != sorted[i-1].val {
+			prev = i
+		}
+		ans[sorted[i].idx] = prev
 	}
 	return ans
 }
