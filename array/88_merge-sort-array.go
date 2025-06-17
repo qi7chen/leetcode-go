@@ -10,7 +10,9 @@ import (
 
 // 将两个数组看作队列，每次从两个数组尾部取出比较大的数字放到结果中 O(m+n)
 func merge(dst []int, m int, arr []int, n int) {
-	i, j, k := m-1, n-1, m+n-1
+	var i = m - 1
+	var j = n - 1
+	var k = m + n - 1
 	for i >= 0 && j >= 0 {
 		if dst[i] > arr[j] {
 			dst[k] = dst[i]
@@ -31,7 +33,7 @@ func merge(dst []int, m int, arr []int, n int) {
 
 // 将数组arr放入dst的尾部，然后直接对整个数组进行排序
 // O((m+n)log(m+n))
-func mergeV2(dst []int, m int, arr []int, n int) {
+func mergeBySort(dst []int, m int, arr []int, n int) {
 	for i := 0; i < n; i++ {
 		dst[m+i] = arr[i]
 	}
