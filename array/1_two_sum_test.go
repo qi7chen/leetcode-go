@@ -28,3 +28,19 @@ func Test_twoSum(t *testing.T) {
 		assert.Equalf(t, tt.want, got, "case-%d", i+1)
 	}
 }
+
+func Benchmark_twoSum(b *testing.B) {
+	nums := []int{2, 7, 11, 15, 3, 6, 4, 8, 10, 14, 1, 5, 9, 12, 13}
+	target := 18
+	for i := 0; i < b.N; i++ {
+		twoSum(nums, target)
+	}
+}
+
+func Benchmark_twoSumBruteForce(b *testing.B) {
+	nums := []int{2, 7, 11, 15, 3, 6, 4, 8, 10, 14, 1, 5, 9, 12, 13}
+	target := 18
+	for i := 0; i < b.N; i++ {
+		twoSumBruteForce(nums, target)
+	}
+}

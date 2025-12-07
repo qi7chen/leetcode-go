@@ -23,3 +23,19 @@ func Test_removeElement(t *testing.T) {
 		assert.Equalf(t, tt.want, tt.nums, "case-%d", i+1)
 	}
 }
+
+func Benchmark_removeElement(b *testing.B) {
+	nums := []int{3, 2, 2, 3}
+	target := 3
+	for i := 0; i < b.N; i++ {
+		removeElement(nums, target)
+	}
+}
+
+func Benchmark_removeElementDoublePointer(b *testing.B) {
+	nums := []int{3, 2, 2, 3}
+	target := 3
+	for i := 0; i < b.N; i++ {
+		removeElementDoublePointer(nums, target)
+	}
+}

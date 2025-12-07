@@ -6,12 +6,22 @@ package leetcode_array
 func twoSum(nums []int, target int) []int {
 	var m = make(map[int]int, len(nums))
 	for i, num := range nums {
-		m[num] = i
-	}
-	for i, num := range nums {
 		if j, ok := m[target-num]; ok && j != i {
 			return []int{j, i}
 		}
+		m[num] = i
 	}
-	return []int{-1, -1}
+	return nil
+}
+
+// 暴力解法 O(N^2)
+func twoSumBruteForce(nums []int, target int) []int {
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+		}
+	}
+	return nil
 }

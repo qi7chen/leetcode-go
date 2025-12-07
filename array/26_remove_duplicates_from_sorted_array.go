@@ -1,22 +1,21 @@
 package leetcode_array
 
-// 用2个指针，一个在前记作 p，一个在后记作 q，算法流程如下：
-// 比较 p 和 q 位置的元素是否相等。
-// 如果相等，q 后移 1 位
-// 如果不相等，将 q 位置的元素复制到 p+1 位置上，p 后移一位，q 后移 1 位
-// 重复上述过程，直到 q 等于数组长度。
+// 给你一个 非严格递增排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，
+// 返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。然后返回 nums 中唯一元素的个数
 // https://leetcode.cn/problems/remove-duplicates-from-sorted-array
+
+// 双指针解法
 func removeDuplicates(nums []int) int {
 	if len(nums) < 2 {
 		return len(nums)
 	}
-	var p, q = 0, 1
-	for q < len(nums) {
-		if nums[p] != nums[q] {
-			p++
-			nums[p] = nums[q]
+	var slow, fast = 0, 1
+	for fast < len(nums) {
+		if nums[slow] != nums[fast] {
+			slow++
+			nums[slow] = nums[fast]
 		}
-		q++
+		fast++
 	}
-	return p + 1
+	return slow + 1
 }

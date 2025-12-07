@@ -18,8 +18,17 @@ func Test_removeDuplicates(t *testing.T) {
 		{[]int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, []int{0, 1, 2, 3, 4}},
 	}
 	for i, tt := range tests {
-		var n = removeDuplicates(tt.nums)
-		assert.Equalf(t, len(tt.expect), n, "case-%d", i+1)
-		assert.Equalf(t, tt.expect, tt.nums[:n], "case-%d", i+1)
+		var got = removeDuplicates(tt.nums)
+		assert.Equalf(t, len(tt.expect), got, "case-%d", i+1)
+		for j := 0; j < got; j++ {
+			assert.Equalf(t, tt.expect[j], tt.nums[j], "case-%d, index-%d", i+1, j)
+		}
+	}
+}
+
+func Benchmark_removeDuplicates(b *testing.B) {
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	for i := 0; i < b.N; i++ {
+		removeDuplicates(nums)
 	}
 }
