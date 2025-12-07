@@ -1,5 +1,8 @@
 # leetcode-go
  
+记录个人的 LeetCode 刷题之路，使用 Go 语言实现，用于学习、总结、回顾和参考
+
+
 ### 数组
 
   序号 | Problem     | Code                                                                                               | Link
