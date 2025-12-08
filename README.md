@@ -10,6 +10,7 @@
 1 | 两数之和        | [源文件](array/1_two_sum.go)  | https://leetcode.cn/problems/two-sum/
 26 | 删除有序数组中的重复项 | [源文件](array/26_remove_duplicates_from_sorted_array.go) | https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
 27 | 移除元素        | [源文件](array/27_remove_element.go) | https://leetcode.cn/problems/remove-element/
+35 | 搜索插入位置     | [源文件](array/35_search_insert_position.go) | https://leetcode.cn/problems/search-insert-position/
 88 | 合并两个有序数组    | [源文件](array/88_merge_sorted_array.go) | https://leetcode.cn/problems/merge-sorted-array/
 1365 | 有多少小于当前数字的数字 | [源文件](array/1365_numbers_smaller_than_the_current.go) | https://leetcode.cn/problems/how-many-numbers-are-smaller-than-the-current-number/
 
