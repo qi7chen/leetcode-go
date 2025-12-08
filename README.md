@@ -10,6 +10,7 @@
 1 | 两数之和        | [源文件](array/1_two_sum.go)  | https://leetcode.cn/problems/two-sum/
 26 | 删除有序数组中的重复项 | [源文件](array/26_remove_duplicates_from_sorted_array.go) | https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
 27 | 移除元素        | [源文件](array/27_remove_element.go) | https://leetcode.cn/problems/remove-element/
+34 | 在排序数组中查找元素的第一个和最后一个位置 | [源文件](array/34_find_first_and_last_position_of_element_in_sorted_array.go) | https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
 35 | 搜索插入位置     | [源文件](array/35_search_insert_position.go) | https://leetcode.cn/problems/search-insert-position/
 88 | 合并两个有序数组    | [源文件](array/88_merge_sorted_array.go) | https://leetcode.cn/problems/merge-sorted-array/
 118 | 杨辉三角       | [源文件](array/118_pascals_triangle.go) | https://leetcode.cn/problems/pascals-triangle/
