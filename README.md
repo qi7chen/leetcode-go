@@ -12,6 +12,7 @@
 27 | 移除元素        | [源文件](array/27_remove_element.go) | https://leetcode.cn/problems/remove-element/
 35 | 搜索插入位置     | [源文件](array/35_search_insert_position.go) | https://leetcode.cn/problems/search-insert-position/
 88 | 合并两个有序数组    | [源文件](array/88_merge_sorted_array.go) | https://leetcode.cn/problems/merge-sorted-array/
+118 | 杨辉三角       | [源文件](array/118_pascals_triangle.go) | https://leetcode.cn/problems/pascals-triangle/
 1365 | 有多少小于当前数字的数字 | [源文件](array/1365_numbers_smaller_than_the_current.go) | https://leetcode.cn/problems/how-many-numbers-are-smaller-than-the-current-number/
 
 
