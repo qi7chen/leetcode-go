@@ -15,6 +15,7 @@
 56 | 合并区间       | [源文件](array/56_merge_intervals.go) | https://leetcode.cn/problems/merge-intervals/
 88 | 合并两个有序数组    | [源文件](array/88_merge_sorted_array.go) | https://leetcode.cn/problems/merge-sorted-array/
 118 | 杨辉三角       | [源文件](array/118_pascals_triangle.go) | https://leetcode.cn/problems/pascals-triangle/
+189 | 旋转数组       | [源文件](array/189_rotate_array.go) | https://leetcode.cn/problems/rotate-array/
 283 | 移动零        | [源文件](array/283_move_zeroes.go) | https://leetcode.cn/problems/move-zeroes/
 1365 | 有多少小于当前数字的数字 | [源文件](array/1365_numbers_smaller_than_the_current.go) | https://leetcode.cn/problems/how-many-numbers-are-smaller-than-the-current-number/
 
