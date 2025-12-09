@@ -21,9 +21,9 @@ func Test_smallerNumbersThanCurrent(t *testing.T) {
 	}
 	for _, tt := range tests {
 		out := smallerNumbersThanCurrent(tt.input)
-		assert.Equal(t, len(tt.input), len(out))
+		assert.Equalf(t, len(tt.input), len(out), "smallerNumbersThanCurrent(%v)", tt.input)
 		if len(tt.input) > 0 {
-			assert.Equal(t, tt.expect, out)
+			assert.Equalf(t, tt.expect, out, "smallerNumbersThanCurrent(%v)", tt.input)
 		}
 	}
 }

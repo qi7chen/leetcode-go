@@ -18,6 +18,6 @@ func Test_searchRange(t *testing.T) {
 	}
 	for _, tt := range tests {
 		got := searchRange(tt.nums, tt.target)
-		assert.Equal(t, tt.want, got)
+		assert.Equalf(t, tt.want, got, "searchRange(%v, %d)", tt.nums, tt.target)
 	}
 }

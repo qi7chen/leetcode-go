@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_merge(t *testing.T) {
+func Test_mergeSortedArray(t *testing.T) {
 	var mergeSortArrayTests = []struct {
 		num1 []int
 		m    int
@@ -19,7 +19,7 @@ func Test_merge(t *testing.T) {
 		{[]int{0}, 0, []int{1}, 1, []int{1}},
 	}
 	for _, tt := range mergeSortArrayTests {
-		merge(tt.num1, tt.m, tt.num2, tt.n)
-		assert.Equal(t, tt.want, tt.num1)
+		mergeSortedArray(tt.num1, tt.m, tt.num2, tt.n)
+		assert.Equalf(t, tt.want, tt.num1, "mergeSortedArray(%v, %d, %v, %d)", tt.num1, tt.m, tt.num2, tt.n)
 	}
 }

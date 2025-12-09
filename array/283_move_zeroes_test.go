@@ -17,6 +17,6 @@ func Test_moveZeroes(t *testing.T) {
 	for _, tt := range tests {
 		moveZeroes(tt.input)
 		var got = tt.input
-		assert.True(t, slices.Equal(tt.want, got))
+		assert.Truef(t, slices.Equal(tt.want, got), "moveZeroes(%v), want %v, got %v", tt.input, tt.want, got)
 	}
 }

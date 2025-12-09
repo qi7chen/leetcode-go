@@ -17,11 +17,11 @@ func Test_removeDuplicates(t *testing.T) {
 		{[]int{1, 1, 2}, []int{1, 2}},
 		{[]int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, []int{0, 1, 2, 3, 4}},
 	}
-	for i, tt := range tests {
+	for _, tt := range tests {
 		var got = removeDuplicates(tt.nums)
-		assert.Equalf(t, len(tt.expect), got, "case-%d", i+1)
+		assert.Equalf(t, len(tt.expect), got, "removeDuplicates(%v)", tt.nums)
 		for j := 0; j < got; j++ {
-			assert.Equalf(t, tt.expect[j], tt.nums[j], "case-%d, index-%d", i+1, j)
+			assert.Equalf(t, tt.expect[j], tt.nums[j], "removeDuplicates(%v)", tt.nums)
 		}
 	}
 }

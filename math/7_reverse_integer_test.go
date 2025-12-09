@@ -1,9 +1,10 @@
 package leetcode_math
 
 import (
-	"fmt"
 	"math"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_reverse(t *testing.T) {
@@ -20,11 +21,7 @@ func Test_reverse(t *testing.T) {
 		{math.MaxInt32, 0},
 	}
 	for _, tt := range tests {
-		var name = fmt.Sprintf("reverse(%v)", tt.want)
-		t.Run(name, func(t *testing.T) {
-			if got := reverse(tt.x); got != tt.want {
-				t.Errorf("reverse() = %v, want %v", got, tt.want)
-			}
-		})
+		got := reverse(tt.x)
+		assert.Equal(t, tt.want, got, "reverse(%v)", tt.x)
 	}
 }

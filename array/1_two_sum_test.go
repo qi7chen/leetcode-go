@@ -22,10 +22,10 @@ func Test_twoSum(t *testing.T) {
 		{[]int{-2, -7, 11, 15}, 0, []int{-1, -1}},
 		{[]int{3, 2, 4}, 6, []int{1, 2}},
 	}
-	for i, tt := range tests {
+	for _, tt := range tests {
 		got := twoSum(tt.nums, tt.target)
 		slices.Sort(got)
-		assert.Equalf(t, tt.want, got, "case-%d", i+1)
+		assert.Equalf(t, tt.want, got, "twoSum(%v, %d)", tt.nums, tt.target)
 	}
 }
 

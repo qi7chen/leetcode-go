@@ -18,6 +18,6 @@ func Test_addBinary(t *testing.T) {
 	}
 	for _, tt := range tests {
 		out := addBinary(tt.a, tt.b)
-		assert.Equal(t, tt.want, out)
+		assert.Equalf(t, tt.want, out, "addBinary(%s, %s)", tt.a, tt.b)
 	}
 }

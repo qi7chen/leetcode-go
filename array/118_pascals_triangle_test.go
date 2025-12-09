@@ -20,9 +20,9 @@ func Test_generate(t *testing.T) {
 	}
 	for _, tt := range tests {
 		var got = generate(tt.input)
-		assert.Equal(t, len(tt.want), len(got))
+		assert.Equalf(t, len(tt.want), len(got), "generate(%d)", tt.input)
 		for i := range tt.want {
-			assert.True(t, slices.Equal(got[i], tt.want[i]))
+			assert.True(t, slices.Equal(got[i], tt.want[i]), "generate(%d)[%d], want %v, got %v", tt.input, i, tt.want[i], got[i])
 		}
 	}
 }

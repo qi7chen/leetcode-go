@@ -6,7 +6,7 @@ package leetcode_array
 // https://leetcode.cn/problems/merge-sorted-array
 
 // 将两个数组看作队列，每次从两个数组尾部取出比较大的数字放到结果中 O(m+n)
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func mergeSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	var i = m - 1
 	var j = n - 1
 	var k = m + n - 1
